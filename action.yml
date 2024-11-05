@@ -60,9 +60,15 @@ runs:
       repository: ${{ inputs.repository }}
       ref: ${{ inputs.ref_branch }}
       fetch-depth: 2
-  - shell: bash
+  # - shell: bash
     # run: ${{ github.action_path }}/cron.sh
+    # run: $GITHUB_ACTION_PATH/cron.sh
+  - if: ${{ runner.os == "Windows" }}
     run: $GITHUB_ACTION_PATH/cron.sh
+    shell: bash
+  - if: ${{ runner.os != "Windows" }}
+    run: ${{ github.action_path }}/cron.sh
+    shell: bash
     env:
       workflow_name: ${{ inputs.workflow_name }}
       push_switch: ${{ inputs.push_switch }}
