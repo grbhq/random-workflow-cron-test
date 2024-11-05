@@ -63,10 +63,10 @@ runs:
   # - shell: bash
     # run: ${{ github.action_path }}/cron.sh
     # run: $GITHUB_ACTION_PATH/cron.sh
-  - if: ${{ runner.os == "Windows" }}
+  - if: ${{ runner.os == 'Windows' }}
     run: $GITHUB_ACTION_PATH/cron.sh
     shell: bash
-  - if: ${{ runner.os != "Windows" }}
+  - if: ${{ runner.os != 'Windows' }}
     run: ${{ github.action_path }}/cron.sh
     shell: bash
     env:
