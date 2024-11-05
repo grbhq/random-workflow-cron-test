@@ -61,7 +61,8 @@ runs:
       ref: ${{ inputs.ref_branch }}
       fetch-depth: 2
   - shell: bash
-    run: ${{ github.action_path }}/cron.sh
+    # run: ${{ github.action_path }}/cron.sh
+    run: $GITHUB_ACTION_PATH/cron.sh
     env:
       workflow_name: ${{ inputs.workflow_name }}
       push_switch: ${{ inputs.push_switch }}
