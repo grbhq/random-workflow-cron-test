@@ -64,10 +64,10 @@ runs:
     # run: ${{ github.action_path }}/cron.sh
     # run: $GITHUB_ACTION_PATH/cron.sh
   - if: ${{ runner.os == 'windows' }}
-    run: $GITHUB_ACTION_PATH/cron.sh
+    run: bash $GITHUB_ACTION_PATH/cron.sh
     shell: bash
   - if: ${{ runner.os != 'windows' }}
-    run: ${{ github.action_path }}/cron.sh
+    run: bash ${{ github.action_path }}/cron.sh
     shell: bash
     env:
       workflow_name: ${{ inputs.workflow_name }}
