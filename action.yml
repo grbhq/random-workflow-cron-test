@@ -69,7 +69,8 @@ runs:
   # - if: ${{ runner.os != 'windows' }}
   #   run: bash ${{ github.action_path }}/cron.sh
   #   shell: bash
-  - run: |
+  - shell: bash
+    run: |
       [ ${{ runner.os }} != 'windows' ] && { 
       echo file_path=${{ github.action_path }} >> $GITHUB_ENV
       exit 0
