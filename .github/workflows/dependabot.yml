@@ -1,0 +1,20 @@
+name: Manually Trigger Dependabot Update
+
+on:
+  workflow_dispatch:
+
+jobs:
+  dependabot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+
+      - name: Trigger Dependabot update via GitHub API
+        run: |
+          echo "Manually triggering Dependabot update..."
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/${{ github.repository }}/dependabot/updates
