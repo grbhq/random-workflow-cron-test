@@ -76,7 +76,9 @@ runs:
   #     exit 0
   #     }
   #     echo file_path=$GITHUB_ACTION_PATH >> $GITHUB_ENV
-  - run: bash $GITHUB_ACTION_PATH/cron.sh
+  - run: |
+      echo $GITHUB_ACTION_PATH
+      bash $GITHUB_ACTION_PATH/cron.sh
     shell: bash
     env:
       workflow_name: ${{ inputs.workflow_name }}
