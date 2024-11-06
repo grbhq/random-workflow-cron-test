@@ -1,0 +1,6 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"  # All GitHub Actions configuration files in the root directory, including action.yml
+    schedule:
+      interval: "monthly"
