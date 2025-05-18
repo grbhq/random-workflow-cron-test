@@ -119,18 +119,14 @@ if [[ $push_switch == true ]]; then
         message=$(git log --pretty=format:"%s" $h -1)
         if [[ $message == "Update Random Cron" ]]; then
             git add $workflow_path
-            git stash -u -k
             git commit --amend --reset-author -m "Update Random Cron"
-            git stash pop
             git reflog expire --expire=now --expire-unreachable=now --all
             git gc --aggressive --prune=now
             git push -f origin ${ref_branch}
         else
             git add $workflow_path
-            git stash -u -k
             git commit -m "Update Random Cron"
-            git stash pop
-            git push origin ${ref_branch}
+            git push -f origin ${ref_branch}
         fi
     else
         git checkout --orphan tmp_branch
